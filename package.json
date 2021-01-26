@@ -14,7 +14,7 @@
   "author": "Chance Hudson",
   "license": "GPL-3.0-or-later",
   "dependencies": {
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "compression": "^1.7.4",
     "especial": "0.0.4",
     "express": "^4.17.1",
