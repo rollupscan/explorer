@@ -33,14 +33,14 @@ module.exports = {
           }
         ]
       },
-      {
-        test: /\.(png|svg|jpg|gif)$/,
-        loader: 'file-loader',
-        options: {
-          publicPath: 'build',
-          esModule: false,
-        }
-      }
+      // {
+      //   test: /\.(png|svg|jpg|gif)$/,
+      //   loader: 'file-loader',
+      //   options: {
+      //     publicPath: 'build',
+      //     esModule: false,
+      //   }
+      // }
     ]
   },
   plugins: [

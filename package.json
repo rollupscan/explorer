@@ -8,12 +8,15 @@
     "start": "NODE_ENV=development node server.js",
     "build": "webpack --config webpack.prod.js --progress",
     "build-server": "npm run build && webpack --config webpack.server.js --progress",
+    "build:worker": "webpack --config ./webpack.worker.js",
     "server": "node server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Chance Hudson",
   "license": "GPL-3.0-or-later",
   "dependencies": {
+    "@cloudflare/kv-asset-handler": "^0.1.0",
+    "@vue/cli-service": "^4.5.11",
     "axios": "^0.21.1",
     "compression": "^1.7.4",
     "especial": "0.0.4",
@@ -23,7 +26,8 @@
     "vue-class-component": "^7.2.5",
     "vue-meta": "^2.4.0",
     "vue-router": "^3.4.3",
-    "vuex": "^3.5.1"
+    "vuex": "^3.5.1",
+    "serialize-javascript": "git://github.com/jchancehud/serialize-javascript#random"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
@@ -36,15 +40,16 @@
     "html-webpack-inline-source-plugin": "0.0.10",
     "html-webpack-plugin": "^4.4.1",
     "memory-fs": "^0.5.0",
+    "url-loader": "^4.1.1",
     "vue-loader": "^15.9.3",
     "vue-server-renderer": "^2.6.12",
-    "vue-style-loader": "^4.1.2",
+    "vue-style-loader": "git://github.com/JChanceHud/vue-style-loader.git#webworker-support",
     "vue-template-compiler": "^2.6.12",
-    "webpack": "^4.44.1",
+    "webpack": "^4.44.0",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",
     "webpack-hot-middleware": "^2.25.0",
-    "webpack-merge": "^5.1.4",
+    "webpack-merge": "^5.7.3",
     "webpack-node-externals": "^2.5.2"
   }
 }
