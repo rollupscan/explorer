@@ -6,12 +6,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const config = merge(common, {
   target: 'webworker',
-  entry: './index.js',
-  mode: 'development',
-  devtool: 'inline-cheap-module-source-map',
+  entry: './src/entry-worker.js',
+  mode: 'production',
   output: {
-    path: path.resolve(__dirname, 'dist/worker'),
-    filename: 'index.js',
+    path: path.resolve(__dirname, 'workers-site/worker'),
+    filename: 'worker.js',
   },
   optimization: {
     runtimeChunk: false,

@@ -1,8 +1,7 @@
 const { getAssetFromKV, mapRequestToAsset } = require('@cloudflare/kv-asset-handler')
-const createApp = require('./src/entry-server').default
-const bundle = require('./build/vue-ssr-server-bundle.json')
-const clientManifest = require('./build/vue-ssr-client-manifest.json')
-const { createRenderer } = require('./vendor/basic')
+const createApp = require('./entry-server').default
+const clientManifest = require('../build/vue-ssr-client-manifest.json')
+const { createRenderer } = require('../vendor/basic')
 
 const renderer = createRenderer({
   clientManifest,
