@@ -1,17 +1,18 @@
 const { getAssetFromKV, mapRequestToAsset } = require('@cloudflare/kv-asset-handler')
 const createApp = require('./entry-server').default
 const clientManifest = require('../build/vue-ssr-client-manifest.json')
-const { createRenderer } = require('../vendor/basic')
+const { createSharedBundleRenderer } = require('vue-webworker-renderer')
+const serverBundle = require('../build/server-bundle').default
 
-const renderer = createRenderer({
+const renderer = createSharedBundleRenderer(serverBundle, {
   clientManifest,
-  inject: true,
-  template: (content, context) => `
+  template: (content, context, r) => `
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A block explorer for Ethereum rollup networks.">
     ${context.head || ''}
     ${context.renderResourceHints(context)}
     ${context.renderStyles(context)}
@@ -32,8 +33,13 @@ async function render(req) {
     url: url.pathname,
     cookie: req.headers['cookie'],
   }
-  const app = await createApp(context)
-  return renderer.renderToString(app, context)
+  return new Promise((rs, rj) => renderer.renderToString(context, (err, html) => {
+    if (err) {
+      rj(err)
+    } else {
+      rs(html)
+    }
+  }))
 }
 
 addEventListener('fetch', (event) => {

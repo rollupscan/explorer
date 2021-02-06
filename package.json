@@ -5,17 +5,15 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "start": "NODE_ENV=development node server.js",
     "build": "webpack --config webpack.prod.js --progress",
     "build:server": "npm run build && webpack --config webpack.server.js --progress",
-    "build:worker": "webpack --config ./webpack.worker.js",
-    "dev": "wrangler dev"
+    "dev": "node scripts/server-dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Chance Hudson",
   "license": "GPL-3.0-or-later",
   "dependencies": {
     "@cloudflare/kv-asset-handler": "^0.1.0",
-    "@vue/cli-service": "^4.5.11",
     "axios": "^0.21.1",
     "express": "^4.17.1",
     "vue": "^2.6.12",
@@ -37,10 +35,10 @@
     "html-webpack-plugin": "^4.4.1",
     "url-loader": "^4.1.1",
     "vue-loader": "^15.9.3",
-    "vue-server-renderer": "^2.6.12",
     "vue-style-loader": "git://github.com/JChanceHud/vue-style-loader.git#webworker-support",
     "vue-template-compiler": "^2.6.12",
-    "webpack": "^4.44.0",
+    "vue-webworker-renderer": "^2.6.12",
+    "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",
     "webpack-hot-middleware": "^2.25.0",
