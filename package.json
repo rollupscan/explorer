@@ -33,6 +33,7 @@
     "file-loader": "^6.1.0",
     "html-webpack-inline-source-plugin": "0.0.10",
     "html-webpack-plugin": "^4.4.1",
+    "memory-fs": "^0.5.0",
     "url-loader": "^4.1.1",
     "vue-loader": "^15.9.3",
     "vue-style-loader": "git://github.com/JChanceHud/vue-style-loader.git#webworker-support",
