@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Header />
     Home page
   </div>
 </template>
@@ -7,10 +8,13 @@
 <script>
 import Vue from 'vue'
 import Component from 'vue-class-component'
+import Header from './components/Header'
 
 @Component({
   name: 'Home',
-  components: {},
+  components: {
+    Header,
+  },
   metaInfo: {
     title: 'Hello World',
   },

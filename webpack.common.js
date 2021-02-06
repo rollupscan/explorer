@@ -33,23 +33,17 @@ module.exports = {
           }
         ]
       },
-      // {
-      //   test: /\.(png|svg|jpg|gif)$/,
-      //   loader: 'file-loader',
-      //   options: {
-      //     publicPath: 'build',
-      //     esModule: false,
-      //   }
-      // }
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        loader: 'file-loader',
+        options: {
+          publicPath: 'build',
+          esModule: false,
+        }
+      }
     ]
   },
   plugins: [
     new VueLoaderPlugin(),
-    new HtmlWebpackPlugin({
-      template: 'static/index.ejs',
-      filename: 'index.html',
-      inlineSource: '.(js|css)',
-    }),
-    // new HtmlWebpackInlineSourcePlugin(),
   ]
 }

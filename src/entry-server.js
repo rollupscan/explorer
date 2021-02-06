@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { createApp } from '.'
 
 export default (context) => new Promise(async (rs, rj) => {
