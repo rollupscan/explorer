@@ -6,4 +6,5 @@ build
 .env
 .DS_Store
 
-.now
+workers-site/worker
+wrangler.toml
