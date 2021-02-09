@@ -5,6 +5,9 @@
       <div class="title-text">
         Zkopru block {{ id.slice(0, 20) }}...{{ id.slice(-20) }}
       </div>
+      <div class="subtitle-text link" v-on:click="viewL1Transaction">
+        L1 Transaction
+      </div>
       <div class="block-section">
         <div class="subtitle-text">
           Transactions
@@ -50,18 +53,25 @@ export default class Block extends Vue {
     if (this.$store.state.zkopru.blocksByHash[this.id]) return
     await this.$store.dispatch('loadBlock', { hash: this.id })
   }
+
+  async viewL1Transaction() {
+    const block = this.$store.state.zkopru.blocksByHash[this.id]
+    if (!block) {
+      await this.$store.dispatch('loadBlock', { hash: this.id })
+      await this.viewL1Transaction()
+      return
+    }
+    window.open(`https://goerli.etherscan.io/tx/${block.proposalTx}`, '_blank')
+  }
 }
 </script>
 <style scoped>
-.container {
-  display: flex;
-  flex-direction: column;
-  max-width: 1400px;
-  margin: auto;
-  padding: 8px;
-}
 .title-text {
   font-size: 42px;
+}
+.link {
+  text-decoration: underline;
+  cursor: pointer;
 }
 .subtitle-text {
   font-size: 32px;
