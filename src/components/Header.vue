@@ -1,6 +1,11 @@
 <template>
   <div class="header-container">
-    <div class="header-text">RollupScan</div>
+    <router-link
+      to="/"
+      style="text-decoration: none; color: black"
+    >
+      <div class="header-text">RollupScan</div>
+  </router-link>
   </div>
 </template>
 <script>
