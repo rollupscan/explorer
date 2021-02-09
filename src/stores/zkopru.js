@@ -1,9 +1,8 @@
-import fetch from 'node-fetch'
 const ZKOPRU_URL = 'https://zkopru.goerli.rollupscan.io'
 
 export default {
   state: {
-    blocks: {},
+    blocksByNumber: {},
     blocksByHash: {},
     sortedBlocks: [],
   },
@@ -28,6 +27,10 @@ export default {
       state.blocksByHash = {
         [block.hash]: block,
         ...state.blocksByHash,
+      }
+      state.blocksByNumber = {
+        [+block.proposalNum]: block,
+        ...state.blocksByNumber,
       }
     }
   },

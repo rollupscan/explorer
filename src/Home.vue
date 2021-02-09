@@ -43,11 +43,10 @@ export default class Home extends Vue {
   async loadBlocks() {
     const promises = []
     for (let x = 0 ; x < 10 ; x++) {
-      promises.push(this.$store.dispatch('loadBlock', { index: x }))
+      if (this.$store.state.zkopru.blocksByNumber[x]) return
+      promises.push(this.$store.dispatch('loadBlock', { index: x }).catch(() => {}))
     }
-    try {
-      await Promise.all(promises)
-    } catch (err) {}
+    await Promise.all(promises)
   }
 }
 </script>

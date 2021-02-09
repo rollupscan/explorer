@@ -1,3 +1,4 @@
+const webpack = require('webpack')
 const { merge } = require('webpack-merge')
 const nodeExternals = require('webpack-node-externals')
 const commonConfig = require('./webpack.common.js')
@@ -21,5 +22,8 @@ module.exports = merge(commonConfig, {
   }),
   plugins: [
     new VueSSRServerPlugin(),
+    new webpack.ProvidePlugin({
+      'fetch': 'node-fetch',
+    })
   ],
 })
