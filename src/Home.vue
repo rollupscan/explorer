@@ -32,15 +32,15 @@ import BlockCell from './components/BlockCell'
   },
 })
 export default class Home extends Vue {
-  blocks = [
-    {
-      number: 2,
-      hash: '0xabcdefabcdefabcdef',
-      network: 'zkopru',
-      transactionCount: 50
-    }
-  ]
+  async serverPrefetch() {
+    await this.loadBlocks()
+  }
+
   async mounted() {
+    await this.loadBlocks()
+  }
+
+  async loadBlocks() {
     const promises = []
     for (let x = 0 ; x < 10 ; x++) {
       promises.push(this.$store.dispatch('loadBlock', { index: x }))

@@ -42,7 +42,12 @@ import TransactionCell from './components/TransactionCell'
   }
 })
 export default class Block extends Vue {
+  async serverPrefetch() {
+    await this.$store.dispatch('loadBlock', { hash: this.id })
+  }
+
   async mounted() {
+    if (this.$store.state.zkopru.blocksByHash[this.id]) return
     await this.$store.dispatch('loadBlock', { hash: this.id })
   }
 }

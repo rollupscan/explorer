@@ -1,3 +1,4 @@
+import axios from 'axios'
 const ZKOPRU_URL = 'https://zkopru.goerli.rollupscan.io'
 
 export default {
@@ -44,18 +45,11 @@ export default {
 }
 
 async function loadMethod(method, ...params) {
-  const res = await fetch(ZKOPRU_URL, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      id: Math.floor(Math.random() * 100000).toString(),
-      jsonrpc: '2.0',
-      method,
-      params,
-    }),
+  const { data } = await axios.post(ZKOPRU_URL, {
+    id: Math.floor(Math.random() * 100000).toString(),
+    jsonrpc: '2.0',
+    method,
+    params,
   })
-  const { result } = await res.json()
-  return result
+  return data.result
 }
