@@ -19,4 +19,11 @@ body {
   margin: 0px;
   font-family: Helvetica, sans-serif;
 }
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 1400px;
+  margin: auto;
+  padding: 8px;
+}
 </style>

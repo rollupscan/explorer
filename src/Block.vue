@@ -58,6 +58,7 @@ export default class Block extends Vue {
   flex-direction: column;
   max-width: 1400px;
   margin: auto;
+  padding: 8px;
 }
 .title-text {
   font-size: 42px;

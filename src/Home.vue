@@ -53,12 +53,6 @@ export default class Home extends Vue {
 </script>
 
 <style scoped>
-.container {
-  display: flex;
-  flex-direction: column;
-  max-width: 1400px;
-  margin: auto;
-}
 .title-text {
   font-size: 42px;
 }

@@ -16,7 +16,7 @@
         Inflows: {{ tx.inflow.length }}
       </div>
       <div>
-        Outflows: {{ tx.inflow.length }}
+        Outflows: {{ tx.outflow.length }}
       </div>
     </div>
   </div>
@@ -30,8 +30,7 @@ import Component from 'vue-class-component'
   components: {},
   props: ['tx'],
 })
-export default class BlockCell extends Vue {
-}
+export default class BlockCell extends Vue {}
 </script>
 <style scoped>
 .transaction-cell-container {
