@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import Meta from 'vue-meta'
 import App from './App'
 import Home from './Home'
+import Block from './Block'
 import ZkopruStore from './stores/zkopru'
 
 export function createApp(cookie) {
@@ -11,12 +12,8 @@ export function createApp(cookie) {
   Vue.use(Vuex)
   Vue.use(Meta)
   const store = new Vuex.Store({
-    state: {
-
-    },
-    mutations: {
-
-    },
+    state: {},
+    mutations: {},
     actions: {},
     modules: {
       zkopru: ZkopruStore,
@@ -26,6 +23,7 @@ export function createApp(cookie) {
     mode: 'history',
     routes: [
       { path: '/', component: Home },
+      { path: '/block/:id', component: Block, props: true },
     ]
   })
   const app = new Vue({

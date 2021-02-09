@@ -3,6 +3,7 @@ const ZKOPRU_URL = 'https://zkopru.goerli.rollupscan.io'
 export default {
   state: {
     blocks: {},
+    blocksByHash: {},
     sortedBlocks: [],
   },
   mutations: {
@@ -23,6 +24,10 @@ export default {
         }
         return 0
       })
+      state.blocksByHash = {
+        [block.hash]: block,
+        ...state.blocksByHash,
+      }
     }
   },
   actions: {

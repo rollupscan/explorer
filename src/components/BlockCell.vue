@@ -11,7 +11,11 @@
         <div v-if="transactionCount() > 0">{{ transactionCount() }} transaction{{ transactionCount() === 1 ? '' : 's'}}</div>
         <div v-if="depositCount() > 0">{{ depositCount() }} deposit{{ depositCount() === 1 ? '' : 's'}}</div>
       </div>
-      <div>{{ block.hash.slice(0, 10) }}...{{ block.hash.slice(-10) }}</div>
+      <router-link
+        :to="`/block/${block.hash}`"
+      >
+        <div>{{ block.hash.slice(0, 10) }}...{{ block.hash.slice(-10) }}</div>
+      </router-link>
     </div>
   </div>
 </template>

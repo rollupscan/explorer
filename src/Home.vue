@@ -2,15 +2,15 @@
   <div>
     <Header />
     <div class="container">
-    <div class="title-text">
-      Home page
-    </div>
-    <div class="block-section">
-      <div class="subtitle-text">
-        Recent Blocks
+      <div class="title-text">
+        Home page
       </div>
-      <BlockCell v-for="block of $store.state.zkopru.sortedBlocks" :block="block" />
-    </div>
+      <div class="block-section">
+        <div class="subtitle-text">
+          Recent Blocks
+        </div>
+        <BlockCell v-for="block of $store.state.zkopru.sortedBlocks" :block="block" />
+      </div>
     </div>
   </div>
 </template>
@@ -28,7 +28,7 @@ import BlockCell from './components/BlockCell'
     BlockCell,
   },
   metaInfo: {
-    title: 'Hello World',
+    title: 'RollupExplorer',
   },
 })
 export default class Home extends Vue {
