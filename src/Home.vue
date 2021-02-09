@@ -9,7 +9,7 @@
       <div class="subtitle-text">
         Recent Blocks
       </div>
-      <BlockCell v-for="block of blocks" :block="block" />
+      <BlockCell v-for="block of $store.state.zkopru.sortedBlocks" :block="block" />
     </div>
     </div>
   </div>
@@ -40,6 +40,15 @@ export default class Home extends Vue {
       transactionCount: 50
     }
   ]
+  async mounted() {
+    const promises = []
+    for (let x = 0 ; x < 10 ; x++) {
+      promises.push(this.$store.dispatch('loadBlock', { index: x }))
+    }
+    try {
+      await Promise.all(promises)
+    } catch (err) {}
+  }
 }
 </script>
 
@@ -55,6 +64,7 @@ export default class Home extends Vue {
 }
 .subtitle-text {
   font-size: 32px;
+  margin: 4px;
 }
 .block-section {
   border: 1px solid black;
