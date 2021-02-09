@@ -22,7 +22,7 @@ export function createApp(cookie) {
   const router = new VueRouter({
     mode: 'history',
     routes: [
-      { path: '/', component: Home },
+      { path: '/', component: Home, exact: true },
       { path: '/block/:id', component: Block, props: true },
     ]
   })
