@@ -1,6 +1,6 @@
 import { createApp } from '.'
 
-export default (context) => new Promise(async (rs, rj) => {
+export default (context) => new Promise((rs, rj) => {
   const { app, router, store } = createApp()
   const { url } = context
   const { fullPath } = router.resolve(url).route
@@ -9,13 +9,15 @@ export default (context) => new Promise(async (rs, rj) => {
   }
 
   router.push(url)
-  router.onReady(async () => {
+  router.onReady(() => {
     try {
       const matchedComponents = router.getMatchedComponents()
       if (!matchedComponents.length) {
         return rj({ code: 404 })
       }
-      context.state = store.state
+      context.rendered = () => {
+        context.state = store.state
+      }
       context.meta = app.$meta()
       rs(app)
     } catch (err) {
